@@ -5,6 +5,7 @@ from torchvision import transforms
 from model import build_model
 
 def test(gpu_id, model_path, datapath, save_root_path, group_size, img_size, img_dir_name):
+    device = torch.device(gpu_id)
     net = build_model(device).to(device)
     net.load_state_dict(torch.load(model_path, map_location=gpu_id))
     net.eval()
